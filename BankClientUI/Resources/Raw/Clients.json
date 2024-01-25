@@ -1,0 +1,44 @@
+[
+  {
+    "firstName": "Alexey",
+    "secondName": "Ivanovich",
+    "lastName": "Petrov",
+    "phone": "89161357711",
+    "passport": "4510223332",
+    "recordInfo": {
+      "created": "2024-01-22T17:44:11.5259187+03:00",
+      "createdBy": "manager",
+      "updated": "2024-01-22T17:44:11.5259187+03:00",
+      "updatedBy": "Record never updated",
+      "updateInfo": "Record created"
+    }
+  },
+  {
+    "firstName": "Olga",
+    "secondName": "Ivanovna",
+    "lastName": "Sidorova",
+    "phone": "89163357997",
+    "passport": "4511993323",
+    "recordInfo": {
+      "created": "2024-01-22T17:44:11.533559+03:00",
+      "createdBy": "manager",
+      "updated": "2024-01-22T17:44:11.533559+03:00",
+      "updatedBy": "Record never updated",
+      "updateInfo": "Record created"
+    }
+  },
+  {
+    "firstName": "Yulia",
+    "secondName": "Sergeevna",
+    "lastName": "Ivanova",
+    "phone": "89111303031",
+    "passport": "4501723903",
+    "recordInfo": {
+      "created": "2024-01-22T17:44:11.5335605+03:00",
+      "createdBy": "manager",
+      "updated": "2024-01-22T17:44:11.5335605+03:00",
+      "updatedBy": "Record never updated",
+      "updateInfo": "Record created"
+    }
+  }
+]
