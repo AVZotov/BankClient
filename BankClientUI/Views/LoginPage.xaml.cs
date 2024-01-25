@@ -2,8 +2,10 @@ namespace BankClientUI.Views;
 
 public partial class LoginPage : ContentPage
 {
-	public LoginPage()
+	public LoginPage(LoginViewModel loginViewModel)
 	{
-		InitializeComponent();
+        InitializeComponent();
+
+		this.BindingContext = loginViewModel;
 	}
 }

@@ -2,3 +2,7 @@
 global using CommunityToolkit.Mvvm.ComponentModel;
 
 global using BankClientUI.Assets;
+global using BankClientUI.ViewModels;
+global using BankClientUI.Views;
+
+

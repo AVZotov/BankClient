@@ -13,6 +13,9 @@
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
+
+            builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<LoginViewModel>();
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
