@@ -1,6 +1,4 @@
-﻿using CommunityToolkit.Mvvm.Input;
-
-namespace BankClientUI.ViewModels
+﻿namespace BankClientUI.ViewModels
 {
     public partial class LoginViewModel : BaseViewModel
     {
@@ -10,17 +8,13 @@ namespace BankClientUI.ViewModels
         [RelayCommand]
         private void Login()
         {
-            if (string.IsNullOrWhiteSpace(Selection)) return;
-
-            if (Selection.Equals("Manager"))
+            if (string.IsNullOrWhiteSpace(Selection))
             {
-                Shell.Current.DisplayAlert("Navigation", "Login as manager", "OK");
+                Shell.Current.DisplayAlert("Error!", "Please Login To proceed", "OK");
+                return;
             }
 
-            if (Selection.Equals("Worker"))
-            {
-                Shell.Current.DisplayAlert("Navigation", "Login as worker", "OK");
-            }
+            Shell.Current.GoToAsync($"{nameof(ClientsPage)}?{nameof(Selection)}={Selection}");
         }
     }
 }

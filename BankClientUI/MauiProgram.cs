@@ -16,6 +16,8 @@
 
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<LoginViewModel>();
+            builder.Services.AddTransient<ClientsPage>();
+            builder.Services.AddTransient<ClientsViewModel>();
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif

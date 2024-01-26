@@ -23,7 +23,7 @@
             <RadioButton Content="Login as worker" Value="Worker"
                          TextColor="#FFC745"/>
             <RadioButton Content="Login as manager" Value="Manager"
-                         TextColor="#FFC745" IsChecked="True"/>
+                         TextColor="#FFC745"/>
             
             <Button Text="LOGIN" HorizontalOptions="Start"
                     MinimumWidthRequest="150" TextColor="#FFC745"
