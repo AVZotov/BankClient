@@ -14,7 +14,12 @@
                 return;
             }
 
-            Shell.Current.GoToAsync($"{nameof(ClientsPage)}?{nameof(Selection)}={Selection}");
+            IWorker worker = (Selection == "manager")? new Manager() : new Worker();
+
+            Shell.Current.GoToAsync(nameof(ClientsPage), true, new Dictionary<string, object>
+            {
+                [nameof(Worker)] = worker
+            });
         }
     }
 }

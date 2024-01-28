@@ -20,9 +20,9 @@
                    FontAttributes="Bold" TextColor="#FFC745"
                    Margin="0,0,0,30"/>
             
-            <RadioButton Content="Login as worker" Value="Worker"
+            <RadioButton Content="Login as worker" Value="worker"
                          TextColor="#FFC745"/>
-            <RadioButton Content="Login as manager" Value="Manager"
+            <RadioButton Content="Login as manager" Value="manager"
                          TextColor="#FFC745"/>
             
             <Button Text="LOGIN" HorizontalOptions="Start"

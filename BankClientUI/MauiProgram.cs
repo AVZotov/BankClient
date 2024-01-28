@@ -13,13 +13,14 @@
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-
             builder.Services.AddTransient<LoginPage>();
             builder.Services.AddTransient<LoginViewModel>();
-            builder.Services.AddTransient<ClientsPage>();
-            builder.Services.AddTransient<ClientsViewModel>();
+            builder.Services.AddSingleton<ClientsPage>();
+            builder.Services.AddSingleton<ClientsViewModel>();
+
+            builder.Services.AddTransient<IStorage, FileStorage>();
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();

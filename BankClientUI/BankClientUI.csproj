@@ -69,6 +69,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiAsset Update="Resources\Raw\Clients.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </MauiAsset>
+	</ItemGroup>
+
+	<ItemGroup>
 	  <MauiXaml Update="Views\ClientsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

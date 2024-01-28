@@ -12,5 +12,9 @@
             HorizontalOptions="Center" />
         
         <Label Text="{Binding Selection}"/>
+        <Label Text="{Binding FileDir}"/>
+        
+        <Button Text="GetClinet"
+                Command="{Binding GetClientCommand}"/>
     </VerticalStackLayout>
 </ContentPage>
