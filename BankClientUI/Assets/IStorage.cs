@@ -2,7 +2,7 @@
 {
     public interface IStorage
     {
-        public List<Client> GetClients();
-        public void SaveClients(List<Client> clients);
+        public Task<List<Client>> GetClientsAsync();
+        public Task SaveClientsAsync(List<Client> clients);
     }
 }

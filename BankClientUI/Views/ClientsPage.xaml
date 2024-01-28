@@ -10,11 +10,10 @@
             Text="Welcome to .NET MAUI!"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
-        
-        <Label Text="{Binding Selection}"/>
-        <Label Text="{Binding FileDir}"/>
-        
+
+        <!--<Label Text="{Binding Selection}"/>-->
+
         <Button Text="GetClinet"
-                Command="{Binding GetClientCommand}"/>
+                Command="{Binding GetClientsCommand}"/>
     </VerticalStackLayout>
 </ContentPage>

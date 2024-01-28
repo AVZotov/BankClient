@@ -1,17 +1,27 @@
-﻿
-namespace BankClientUI.Models
+﻿namespace BankClientUI.Models
 {
     public class FileStorage : IStorage
     {
         private readonly string fileName = "Clients.json";
 
-        public List<Client> GetClients()
+        public async Task<List<Client>> GetClientsAsync()
         {
-            //var path = FileSystem.Current.AppDataDirectory()
-                throw new NotImplementedException();
+            List<Client>? clients = [];
+
+            if (FileSystem.AppPackageFileExistsAsync(fileName).Result)
+            {
+                using var stream = FileSystem.OpenAppPackageFileAsync(fileName);
+                using var reader = new StreamReader(stream.Result);
+                string json = await reader.ReadToEndAsync();
+                clients = JsonConvert.DeserializeObject<List<Client>>(json);
+
+                return clients;
+            }
+
+            throw new FileNotFoundException();
         }
 
-        public void SaveClients(List<Client> clients)
+        public Task SaveClientsAsync(List<Client> clients)
         {
             throw new NotImplementedException();
         }
