@@ -6,37 +6,50 @@
              x:Class="BankClientUI.Views.ClientsPage"
              Title="{Binding Title}">
     <Grid ColumnDefinitions="Auto, *" RowDefinitions="*, Auto">
-        <Frame BackgroundColor="LightGray" BorderColor="Black"
-               CornerRadius="5" Margin="5">
-            <CollectionView Grid.Row="0" Grid.Column="0" 
-                            Background="Transparent" ItemsSource="{Binding Clients}"
+
+        <Frame  Grid.Row="0" Grid.Column="0" 
+                BackgroundColor="White" BorderColor="Black"
+               CornerRadius="5"  Margin="5">
+            <CollectionView Background="White" ItemsSource="{Binding Clients}"
                             SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="viewmodel:ClientDetailsViewModel">
-                        <Grid Padding="3">
-                            <Frame Style="{StaticResource CardView}">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer 
+                        <Border Style="{StaticResource SelectedView}" HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Fill">
+                            <Border.Shadow>
+                                <Shadow Brush="Black"
+                                            Offset="1,1"
+                                            Radius="5"
+                                            Opacity="0.3" />
+                            </Border.Shadow>
+                            <Border.StrokeShape>
+                                <RoundRectangle CornerRadius="5" />
+                            </Border.StrokeShape>
+                            <Border.GestureRecognizers>
+                                <TapGestureRecognizer 
                                         Command="{Binding Source={RelativeSource AncestorType= {x:Type viewmodel:ClientsViewModel}},
                                         Path=ShowDetailsCommand}" CommandParameter="{Binding .}" />
-                                </Frame.GestureRecognizers>
-                                <Grid RowDefinitions="*, Auto">
-                                    <HorizontalStackLayout Grid.Row="0" Background="Pink">
-                                        <Label Text="{Binding LastName}" FontSize="Medium" Margin="0,0,5,0"/>
-                                        <Label Text="{Binding FirstName}" FontSize="Medium"/>
-                                    </HorizontalStackLayout>
-                                    
-                                    <HorizontalStackLayout Grid.Row="1">
-                                        <Label Text="{Binding Created}" FontSize="Micro" Margin="0,0,5,0"/>
-                                        <Label Text="{Binding Updated}" FontSize="Micro"/>
-                                    </HorizontalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </Grid>
+                            </Border.GestureRecognizers>
+                            <Grid RowDefinitions="*, Auto">
+                                <HorizontalStackLayout Grid.Row="0">
+                                    <Label Text="{Binding LastName}" FontSize="Medium" Margin="0,0,5,0"/>
+                                    <Label Text="{Binding FirstName}" FontSize="Medium"/>
+                                </HorizontalStackLayout>
+
+                                <HorizontalStackLayout Grid.Row="1">
+                                    <Label Text="Last Edited:" FontSize="Micro" Margin="0,0,5,0"/>
+                                    <Label Text="{Binding Updated}" FontSize="Micro"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Border>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </Frame>
 
+        <Frame  Grid.Row="0" Grid.Column="1" CornerRadius="5"
+                BackgroundColor="LightGray" Margin="5" BorderColor="Black">
+            <Label Text="{Binding SelectedClient.FirstName}" />
+        </Frame>
     </Grid>
 </ContentPage>

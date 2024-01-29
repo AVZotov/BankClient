@@ -2,33 +2,30 @@
 {
     public partial class ClientDetailsViewModel : BaseViewModel
     {
-        public bool CanAdd;
-        public bool CanDelete;
         [ObservableProperty]
-        private string firstName;
+        private string? firstName;
         [ObservableProperty]
-        private string secondName;
+        private string? secondName;
         [ObservableProperty]
-        private string lastName;
+        private string? lastName;
         [ObservableProperty]
-        private string phone;
+        private string? phone;
         [ObservableProperty]
-        private string passport;
+        private string? passport;
         [ObservableProperty]
         private DateTime created;
         [ObservableProperty]
-        private string createdBy;
+        private string? createdBy;
         [ObservableProperty]
         private DateTime updated;
         [ObservableProperty]
-        private string updatedBy;
+        private string? updatedBy;
         [ObservableProperty]
-        private string updateInfo;
+        private string? updateInfo;
 
         private Client client;
         private readonly IWorker worker;
-        private readonly string accessToken = "manager";
-
+        private const string ACCESS_TOKEN = "manager";
 
         public ClientDetailsViewModel(Client client, IWorker worker)
         {
@@ -39,13 +36,11 @@
 
         private void UpdateFields()
         {
-            CanAdd = (worker.GetAccess() == accessToken) ? true : false;
-            CanDelete = (worker.GetAccess() == accessToken) ? true : false;
             FirstName = client.GetFirstName();
             SecondName = client.GetSecondName();
             LastName = client.GetLastName();
-            Phone = (worker.GetAccess() == accessToken) ? client.GetPhone() : "permission denied";
-            Passport = (worker.GetAccess() == accessToken) ? client.GetPassport() : "permission denied";
+            Phone = (worker.GetAccess().Equals(ACCESS_TOKEN)) ? client.GetPhone() : "permission denied";
+            Passport = (worker.GetAccess().Equals(ACCESS_TOKEN)) ? client.GetPassport() : "permission denied";
             RecordInfo recordInfo = client.GetRecordInfo();
             Created = recordInfo.GetRecordCreationDate();
             CreatedBy = recordInfo.GetRecordCreationPerson();
@@ -53,7 +48,5 @@
             UpdatedBy = recordInfo.GetRecordUpdatedPerson();
             UpdateInfo = recordInfo.GetRecordUpdatedInfo();
         }
-
-
     }
 }
