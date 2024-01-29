@@ -1,4 +1,5 @@
-﻿namespace BankClientUI
+﻿
+namespace BankClientUI
 {
     public partial class App : Application
     {

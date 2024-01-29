@@ -4,7 +4,7 @@
     {
         private readonly string fileName = "Clients.json";
 
-        public async Task<List<Client>> GetClientsAsync()
+        public List<Client> GetClients()
         {
             List<Client>? clients = [];
 
@@ -12,7 +12,7 @@
             {
                 using var stream = FileSystem.OpenAppPackageFileAsync(fileName);
                 using var reader = new StreamReader(stream.Result);
-                string json = await reader.ReadToEndAsync();
+                string json = reader.ReadToEndAsync().Result;
                 clients = JsonConvert.DeserializeObject<List<Client>>(json);
 
                 return clients;
@@ -21,7 +21,7 @@
             throw new FileNotFoundException();
         }
 
-        public Task SaveClientsAsync(List<Client> clients)
+        public void SaveClients(List<Client> clients)
         {
             throw new NotImplementedException();
         }

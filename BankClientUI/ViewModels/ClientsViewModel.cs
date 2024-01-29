@@ -4,27 +4,30 @@
     
     public partial class ClientsViewModel : BaseViewModel, IQueryAttributable
     {
-        public ObservableCollection<Client>? clients;
+        public ObservableCollection<ClientDetailsViewModel>? Clients { get; set; }
 
         [ObservableProperty]
-        private IWorker? worker;
+        private IWorker worker;
 
         private readonly IStorage storage;
 
         public ClientsViewModel(IStorage storage)
         {
-            clients = new ObservableCollection<Client>();
+            Clients = new();
             this.storage = storage;
+            Title = "Clients List";
         }
 
-        [RelayCommand]
         public void GetClients()
         {
-            clients?.Clear();
+            List<Client> list = new List<Client>();
 
-            var responce = storage.GetClientsAsync().Result;
+            list = storage.GetClients();
 
-            responce?.ForEach(client => clients.Add(client));
+            foreach (Client client in list)
+            {
+                Clients.Add(new ClientDetailsViewModel(client, worker));
+            }
 
         }
 

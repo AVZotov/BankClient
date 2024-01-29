@@ -4,16 +4,39 @@
              xmlns:viewmodel="clr-namespace:BankClientUI.ViewModels"
              x:DataType="viewmodel:ClientsViewModel"
              x:Class="BankClientUI.Views.ClientsPage"
-             Title="ClientsPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="{Binding Title}">
+    <Grid ColumnDefinitions="Auto, *" RowDefinitions="*, Auto">
+        <Frame BackgroundColor="LightGray" BorderColor="Black"
+               CornerRadius="5" Margin="5">
+            <CollectionView Grid.Row="0" Grid.Column="0" 
+                            Background="Transparent" ItemsSource="{Binding Clients}"
+                            SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="viewmodel:ClientDetailsViewModel">
+                        <Grid Padding="3">
+                            <Frame Style="{StaticResource CardView}">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType= {x:Type viewmodel:ClientsViewModel}},
+                                        Path=ShowDetailsCommand}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <Grid RowDefinitions="*, Auto">
+                                    <HorizontalStackLayout Grid.Row="0" Background="Pink">
+                                        <Label Text="{Binding LastName}" FontSize="Medium" Margin="0,0,5,0"/>
+                                        <Label Text="{Binding FirstName}" FontSize="Medium"/>
+                                    </HorizontalStackLayout>
+                                    
+                                    <HorizontalStackLayout Grid.Row="1">
+                                        <Label Text="{Binding Created}" FontSize="Micro" Margin="0,0,5,0"/>
+                                        <Label Text="{Binding Updated}" FontSize="Micro"/>
+                                    </HorizontalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </Frame>
 
-        <!--<Label Text="{Binding Selection}"/>-->
-
-        <Button Text="GetClinet"
-                Command="{Binding GetClientsCommand}"/>
-    </VerticalStackLayout>
+    </Grid>
 </ContentPage>
