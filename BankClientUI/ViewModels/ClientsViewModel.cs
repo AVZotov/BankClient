@@ -7,12 +7,15 @@
         public ObservableCollection<ClientDetailsViewModel>? Clients { get; set; }
         public bool CanAdd => IsManager();
         public bool CanDelete => IsManager();
+
         [ObservableProperty]
         private ClientDetailsViewModel? selectedClient = null;
+
         [ObservableProperty]
         [NotifyPropertyChangedFor(nameof(CanAdd))]
         [NotifyPropertyChangedFor(nameof(CanDelete))]
         private IWorker? worker;
+
         private readonly IStorage storage;
 
         public ClientsViewModel(IStorage storage)

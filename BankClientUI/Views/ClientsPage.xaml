@@ -48,8 +48,105 @@
         </Frame>
 
         <Frame  Grid.Row="0" Grid.Column="1" CornerRadius="5"
-                BackgroundColor="LightGray" Margin="5" BorderColor="Black">
-            <Label Text="{Binding SelectedClient.FirstName}" />
+                BackgroundColor="White" Margin="5" BorderColor="Black">
+
+            <Grid ColumnDefinitions="*, auto" RowDefinitions="auto, *">
+
+                <Label FontSize="Large" FontAutoScalingEnabled="True"
+                           HorizontalOptions="CenterAndExpand" Grid.Row="0"
+                           Grid.Column="0">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{Binding SelectedClient.LastName}"/>
+                            <Span Text=" "/>
+                            <Span Text="{Binding SelectedClient.FirstName}"/>
+                            <Span Text=" "/>
+                            <Span Text="{Binding SelectedClient.SecondName}"/>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Grid Grid.Column="0" Grid.Row="1"
+                      ColumnDefinitions="auto, *">
+
+                    <VerticalStackLayout Grid.Column="0" VerticalOptions="Start"
+                                         HorizontalOptions="Start" Spacing="30">
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="Last name: " PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="First name: " PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="Second name: " PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="Phone: " PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="Passport: " PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="Record created: " PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="Created by: " PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="Record Edited: " PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium"
+                               Placeholder="Edited by: " PlaceholderColor="Black"/>
+
+                    </VerticalStackLayout>
+
+                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Start"
+                                         HorizontalOptions="Start" Spacing="30">
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.LastName}"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start"
+                               PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.FirstName}"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.SecondName}" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.Phone}"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.Passport}"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.Created}"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.CreatedBy}"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.Updated}"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
+
+                        <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
+                           Placeholder="{Binding SelectedClient.UpdatedBy}"
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
+                    </VerticalStackLayout>
+                </Grid>
+
+                <Frame CornerRadius="5" Margin="5" BackgroundColor="White"
+                       Grid.Column="1">
+                </Frame>
+            </Grid>
         </Frame>
     </Grid>
 </ContentPage>
