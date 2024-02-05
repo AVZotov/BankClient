@@ -39,7 +39,7 @@
             FirstName = client.GetFirstName();
             SecondName = client.GetSecondName();
             LastName = client.GetLastName();
-            Phone = (worker.GetAccess().Equals(ACCESS_TOKEN)) ? client.GetPhone() : "permission denied";
+            Phone = client.GetPhone();
             Passport = (worker.GetAccess().Equals(ACCESS_TOKEN)) ? client.GetPassport() : "permission denied";
             RecordInfo recordInfo = client.GetRecordInfo();
             Created = recordInfo.GetRecordCreationDate();

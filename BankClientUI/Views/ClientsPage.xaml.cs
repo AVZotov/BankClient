@@ -17,4 +17,14 @@ public partial class ClientsPage : ContentPage
         base.OnNavigatedTo(args);
         clientsViewModel.GetClients();
     }
+
+    private void PointerGestureRecognizer_PointerEntered(object sender, PointerEventArgs e)
+    {
+        ((Button)sender).Background = Color.FromArgb("#111730");
+    }
+
+    private void PointerGestureRecognizer_PointerExited(object sender, PointerEventArgs e)
+    {
+        ((Button)sender).Background = Color.FromArgb("#2C3C5D");
+    }
 }

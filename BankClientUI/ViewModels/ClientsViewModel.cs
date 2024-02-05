@@ -1,19 +1,25 @@
-﻿namespace BankClientUI.ViewModels
+﻿using System.Windows.Input;
+
+namespace BankClientUI.ViewModels
 {
     //[QueryProperty(nameof(Worker), nameof(Worker))] to pass Interface instead of Class as Navigation parameter from LoginViewModel to this the possible soulution is to use IQuerryAttributable 
     
     public partial class ClientsViewModel : BaseViewModel, IQueryAttributable
     {
         public ObservableCollection<ClientDetailsViewModel>? Clients { get; set; }
-        public bool CanAdd => IsManager();
-        public bool CanDelete => IsManager();
+        public bool IsFullAccess => IsManager();
+
+        [ObservableProperty]
+        private bool isBlocked = true;
+
+        [ObservableProperty]
+        private bool isBlockedPassport = true;
 
         [ObservableProperty]
         private ClientDetailsViewModel? selectedClient = null;
 
         [ObservableProperty]
-        [NotifyPropertyChangedFor(nameof(CanAdd))]
-        [NotifyPropertyChangedFor(nameof(CanDelete))]
+        [NotifyPropertyChangedFor(nameof(IsFullAccess))]
         private IWorker? worker;
 
         private readonly IStorage storage;
@@ -28,7 +34,29 @@
         [RelayCommand]
         private void ShowDetails(ClientDetailsViewModel clientDetailsViewModel)
         {
-                SelectedClient = clientDetailsViewModel;
+            SelectedClient = clientDetailsViewModel;
+            IsBlocked = true;
+            IsBlockedPassport = true;
+        }
+
+        [RelayCommand]
+        private void CanEdit()
+        {
+            IsBlocked = false;
+            IsBlockedPassport = (worker.GetAccess().Equals("manager")) ? false : true;
+        }
+
+        [RelayCommand]
+        private void Udpate(Entry sender)
+        {
+            if (SelectedClient != null)
+            {
+                SelectedClient.LastName = sender.Text;
+            }
+            sender = new Entry();
+            sender.Placeholder = "test";
+            sender.Text = String.Empty;
+            sender.IsReadOnly = true;
         }
 
         public void GetClients()
@@ -48,9 +76,7 @@
 
         private bool IsManager()
         {
-            if (Worker == null || Worker.GetAccess().Equals("worker")) return false;
-
-            return true;
+            return (Worker == null || Worker.GetAccess().Equals("worker")) ? false : true;
         }
     }
 }

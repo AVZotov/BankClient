@@ -57,6 +57,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Images\user.png" />
 	  <None Remove="Resources\raw\Clients.json" />
 	</ItemGroup>
 
