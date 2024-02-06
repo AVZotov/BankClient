@@ -6,7 +6,7 @@ namespace BankClientUI.ViewModels
     
     public partial class ClientsViewModel : BaseViewModel, IQueryAttributable
     {
-        public ObservableCollection<ClientDetailsViewModel>? Clients { get; set; }
+        public ObservableCollection<ClientDetailsViewModel> Clients { get; set; }
         public bool IsFullAccess => IsManager();
 
         [ObservableProperty]
@@ -42,30 +42,23 @@ namespace BankClientUI.ViewModels
         [RelayCommand]
         private void CanEdit()
         {
-            IsBlocked = false;
-            IsBlockedPassport = (worker.GetAccess().Equals("manager")) ? false : true;
-        }
+            if (Worker is null) { return; }
 
-        [RelayCommand]
-        private void Udpate(Entry sender)
-        {
-            if (SelectedClient != null)
-            {
-                SelectedClient.LastName = sender.Text;
-            }
-            sender = new Entry();
-            sender.Placeholder = "test";
-            sender.Text = String.Empty;
-            sender.IsReadOnly = true;
+            IsBlocked = false;
+            IsBlockedPassport = !Worker.GetAccess().Equals("manager");
         }
 
         public void GetClients()
         {
-            List<Client> list = storage.GetClients();
+            List<Client> clientsList = storage.GetClients();
 
-            foreach (Client client in list)
+            if (clientsList is null) { return; }
+
+            if (Worker is null) { return; }
+
+            foreach (Client client in clientsList)
             {
-                Clients.Add(new ClientDetailsViewModel(client, worker));
+                Clients.Add(new ClientDetailsViewModel(client, Worker));
             }
         }
 
@@ -76,7 +69,7 @@ namespace BankClientUI.ViewModels
 
         private bool IsManager()
         {
-            return (Worker == null || Worker.GetAccess().Equals("worker")) ? false : true;
+            return Worker != null && !Worker.GetAccess().Equals("worker");
         }
     }
 }
