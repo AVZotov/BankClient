@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BankClientUI.Views.EditClientPage"
+             Shell.NavBarIsVisible="False"
+             xmlns:viewmodel="clr-namespace:BankClientUI.ViewModels"
+             x:DataType="viewmodel:EditClientViewModel"
+             Title="{Binding Title}">
+
+    <ContentPage.Background>
+
+        <LinearGradientBrush>
+            <GradientStop Color="#D3E4ED"
+                          Offset="0.1" />
+            <GradientStop Color="#84A7BA"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior IsVisible="False"/>
+    </Shell.BackButtonBehavior>
+
+    <Border Stroke="Black" Margin="30">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="15"/>
+        </Border.StrokeShape>
+
+        <Border.Shadow>
+            <Shadow Brush="Black" Radius="5"
+                            Offset="5, 5" Opacity="0.9"/>
+        </Border.Shadow>
+        
+        <Button Text="Cancel" IsEnabled="{Binding IsFullAccess}" />
+    </Border>
+</ContentPage>

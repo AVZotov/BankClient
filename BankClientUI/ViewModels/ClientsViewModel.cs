@@ -28,6 +28,19 @@
             SelectedClient = clientDetailsViewModel;
         }
 
+        [RelayCommand]
+        private void EditClient()
+        {
+            if (SelectedClient is not null)
+            {
+                Shell.Current.GoToAsync($"{nameof(EditClientPage)}?IsFullAccess={IsFullAccess}", new Dictionary<string, object>
+                {
+                    [nameof(ClientDetailsViewModel)] = SelectedClient
+                });
+            }
+
+        }
+
         public void GetClients()
         {
             List<Client> clientsList = storage.GetClients();
@@ -44,13 +57,11 @@
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
-            if (query.TryGetValue(nameof(Worker), out _))
+            if (query.TryGetValue(nameof(Worker), out object? value))
             {
-                Worker = (IWorker)query[nameof(Worker)];
+                Worker = (IWorker)value;
                 IsFullAccess = IsManager();
             }
-
-
         }
 
         private bool IsManager()

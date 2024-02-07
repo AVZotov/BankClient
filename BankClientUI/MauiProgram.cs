@@ -17,6 +17,8 @@
             builder.Services.AddTransient<LoginViewModel>();
             builder.Services.AddTransient<ClientsPage>();
             builder.Services.AddTransient<ClientsViewModel>();
+            builder.Services.AddTransient<EditClientPage>();
+            builder.Services.AddTransient<EditClientViewModel>();
 
             builder.Services.AddTransient<IStorage, FileStorage>();
 #if DEBUG

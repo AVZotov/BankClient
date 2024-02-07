@@ -6,6 +6,7 @@
              x:Class="BankClientUI.Views.ClientsPage"
              Shell.NavBarIsVisible="False"
              Title="{Binding Title}">
+    
     <ContentPage.Background>
 
         <LinearGradientBrush>
@@ -15,6 +16,7 @@
                           Offset="1.0" />
         </LinearGradientBrush>
     </ContentPage.Background>
+    
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False"/>
     </Shell.BackButtonBehavior>
@@ -141,7 +143,8 @@
                                        Padding="0, 0, 0, 20">
                     <Button Text="Edit client" TextColor="#8E9BB7"
                             FontAttributes="Bold" BackgroundColor="#2C3C5D"
-                            FontSize="Small" FontAutoScalingEnabled="True">
+                            FontSize="Small" FontAutoScalingEnabled="True"
+                            Command="{Binding EditClientCommand}">
                         <Button.GestureRecognizers>
                             <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered"/>
                             <PointerGestureRecognizer PointerExited="PointerGestureRecognizer_PointerExited" />
