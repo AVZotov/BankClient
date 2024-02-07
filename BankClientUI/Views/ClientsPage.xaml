@@ -108,20 +108,24 @@
                     <Frame Grid.Column="0" Background="Transparent">
                         <Grid>
                             <HorizontalStackLayout Spacing="50" HorizontalOptions="Center" VerticalOptions="Center">
-                                <VerticalStackLayout Grid.Column="0" Spacing="30">
+                                <VerticalStackLayout Grid.Column="0" Spacing="10">
                                     <Label Text="Last name:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
                                     <Label Text="First name:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
                                     <Label Text="Second name:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
+                                    <Label Text="Phone:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
+                                    <Label Text="Passport:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
                                     <Label Text="Record created:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
                                     <Label Text="Created by:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
                                     <Label Text="Last update:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
                                     <Label Text="Updated by:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
                                 </VerticalStackLayout>
 
-                                <VerticalStackLayout Grid.Column="0" Spacing="30">
+                                <VerticalStackLayout Grid.Column="0" Spacing="10">
                                     <Label Text="{Binding SelectedClient.LastName}" TextColor="#8E9BB7" FontSize="Medium"/>
                                     <Label Text="{Binding SelectedClient.FirstName}" TextColor="#8E9BB7" FontSize="Medium"/>
                                     <Label Text="{Binding SelectedClient.SecondName}" TextColor="#8E9BB7" FontSize="Medium"/>
+                                    <Label Text="{Binding SelectedClient.Phone}" TextColor="#8E9BB7" FontSize="Medium"/>
+                                    <Label Text="{Binding SelectedClient.Passport}" TextColor="#8E9BB7" FontSize="Medium"/>
                                     <Label Text="{Binding SelectedClient.Created}" TextColor="#8E9BB7" FontSize="Medium"/>
                                     <Label Text="{Binding SelectedClient.CreatedBy}" TextColor="#8E9BB7" FontSize="Medium"/>
                                     <Label Text="{Binding SelectedClient.Updated}" TextColor="#8E9BB7" FontSize="Medium"/>
@@ -146,7 +150,8 @@
 
                     <Button Text="Add new client" TextColor="#8E9BB7"
                             FontAttributes="Bold" BackgroundColor="#2C3C5D"
-                            FontSize="Small" FontAutoScalingEnabled="True">
+                            FontSize="Small" FontAutoScalingEnabled="True"
+                            IsEnabled="{Binding IsFullAccess}">
                         <Button.GestureRecognizers>
                             <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered"/>
                             <PointerGestureRecognizer PointerExited="PointerGestureRecognizer_PointerExited" />
@@ -155,7 +160,8 @@
 
                     <Button Text="Delete record" TextColor="#8E9BB7"
                             FontAttributes="Bold" BackgroundColor="#2C3C5D"
-                            FontSize="Small" FontAutoScalingEnabled="True">
+                            FontSize="Small" FontAutoScalingEnabled="True"
+                            IsEnabled="{Binding IsFullAccess}">
                         <Button.GestureRecognizers>
                             <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered"/>
                             <PointerGestureRecognizer PointerExited="PointerGestureRecognizer_PointerExited" />
@@ -176,144 +182,12 @@
     </Border>
 </ContentPage>
 
-<!--                                    <Label Text="{Binding SelectedClient.LastName}" TextColor="#8E9BB7" 
-    <Grid ColumnDefinitions="1*, 2*"
-          Margin="50" BackgroundColor="#7EA1C4" ColumnSpacing="30">
 
-    <Frame  Grid.Row="0" Grid.Column="0" 
-                BackgroundColor="Transparent" BorderColor="#1B365C"
-               CornerRadius="5">
 
-        <CollectionView Background="#7EA1C4" ItemsSource="{Binding Clients}"
-                            SelectionMode="Single">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="viewmodel:ClientDetailsViewModel">
-                    <Frame Background="Transparent" BorderColor="#1B365C" Margin="5">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer 
-                                        Command="{Binding Source={RelativeSource AncestorType= {x:Type viewmodel:ClientsViewModel}},
-                                        Path=ShowDetailsCommand}" CommandParameter="{Binding .}" />
-                        </Frame.GestureRecognizers>
-                    </Frame>
-
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </Frame>
-
-    <Frame  Grid.Row="0" Grid.Column="1" CornerRadius="5"
-                BackgroundColor="White" BorderColor="Black">
-
-        <Grid ColumnDefinitions="4*, *" RowDefinitions="*, 4*">
-
-            <Label FontSize="Large" FontAutoScalingEnabled="True"
-                           HorizontalOptions="CenterAndExpand" Grid.Row="0"
-                           Grid.Column="0" VerticalOptions="Center">
-                <Label.FormattedText>
-                    <FormattedString>
-                        <Span Text="{Binding SelectedClient.LastName}"/>
-                        <Span Text=" "/>
-                        <Span Text="{Binding SelectedClient.FirstName}"/>
-                        <Span Text=" "/>
-                        <Span Text="{Binding SelectedClient.SecondName}"/>
-                    </FormattedString>
-                </Label.FormattedText>
-            </Label>
-
-            <Grid Grid.Column="0" Grid.Row="1"
-                      ColumnDefinitions="auto, *">
-
-                <VerticalStackLayout Grid.Column="0" VerticalOptions="Start"
-                                         HorizontalOptions="Start" Spacing="30">
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="Last name: " PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="First name: " PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="Second name: " PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="Phone: " PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="Passport: " PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="Record created: " PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="Created by: " PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="Record Edited: " PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium"
-                               Placeholder="Edited by: " PlaceholderColor="Black"/>
-
-                </VerticalStackLayout>
-
-                <VerticalStackLayout Grid.Column="1" VerticalOptions="Start"
-                                         HorizontalOptions="Start" Spacing="30">
-
-                    <HorizontalStackLayout Spacing="20">
+                    <!--<HorizontalStackLayout Spacing="20">
                         <Entry IsReadOnly="{Binding IsBlocked}" FontSize="Medium" ClearButtonVisibility="WhileEditing"
                            Placeholder="{Binding SelectedClient.LastName}" ReturnCommand="{Binding UdpateCommand}" ReturnCommandParameter="{Binding Source={RelativeSource Self}}"
                            VerticalOptions="CenterAndExpand" HorizontalOptions="Start"
                                PlaceholderColor="Black"/>
                         <Label Text="{Binding SelectedClient.LastName}"></Label>
-                    </HorizontalStackLayout>
-
-                    <Entry IsReadOnly="{Binding IsBlocked}" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.FirstName}"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="{Binding IsBlocked}" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.SecondName}" 
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="{Binding IsBlocked}" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.Phone}"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="{Binding IsBlockedPassport}" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.Passport}"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.Created}"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.CreatedBy}"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.Updated}"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
-
-                    <Entry IsReadOnly="True" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.UpdatedBy}"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start" PlaceholderColor="Black"/>
-                </VerticalStackLayout>
-            </Grid>
-
-            <Frame Grid.Column="1" Grid.Row="1"
-                       CornerRadius="5" Margin="5" BackgroundColor="White">
-
-                <VerticalStackLayout Spacing="50" Margin="0, 30, 0, 30">
-
-                    <Button Text="Edit Client" Command="{Binding CanEditCommand}"/>
-                    <Button Text="New Client" IsEnabled="{Binding IsFullAccess}"/>
-                    <Button Text="Delete Client" IsEnabled="{Binding IsFullAccess}"/>
-                    <Button Text="Save"/>
-
-
-                </VerticalStackLayout>
-            </Frame>
-        </Grid>
-    </Frame>
-</Grid>
-</ContentPage>-->
+                    </HorizontalStackLayout>-->
