@@ -1,52 +1,58 @@
-﻿namespace BankClientUI.ViewModels
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BankClientUI.ViewModels
 {
     public partial class ClientDetailsViewModel : BaseViewModel
     {
         [ObservableProperty]
-        private string? firstName;
+        private string firstName;
+
         [ObservableProperty]
-        private string? secondName;
+        private string secondName;
+
         [ObservableProperty]
-        private string? lastName;
+        private string lastName;
+
         [ObservableProperty]
-        private string? phone;
+        private string phone;
+
         [ObservableProperty]
-        private string? passport;
+        private string passport;
+
         [ObservableProperty]
         private DateTime created;
+
         [ObservableProperty]
-        private string? createdBy;
+        private string createdBy;
+
         [ObservableProperty]
-        private DateTime updated;
+        private DateTime? updated;
+
         [ObservableProperty]
         private string? updatedBy;
-        [ObservableProperty]
-        private string? updateInfo;
 
-        private Client client;
-        private readonly IWorker worker;
-        private const string ACCESS_TOKEN = "manager";
-
-        public ClientDetailsViewModel(Client client, IWorker worker)
-        {
-            this.client = client;
-            this.worker = worker;
-            UpdateFields();
-        }
-
-        private void UpdateFields()
+        public ClientDetailsViewModel(Client client)
         {
             FirstName = client.GetFirstName();
             SecondName = client.GetSecondName();
             LastName = client.GetLastName();
             Phone = client.GetPhone();
-            Passport = (worker.GetAccess().Equals(ACCESS_TOKEN)) ? client.GetPassport() : "permission denied";
+            Passport = client.GetPassport();
             RecordInfo recordInfo = client.GetRecordInfo();
             Created = recordInfo.GetRecordCreationDate();
             CreatedBy = recordInfo.GetRecordCreationPerson();
             Updated = recordInfo.GetRecordUpdatedDate();
             UpdatedBy = recordInfo.GetRecordUpdatedPerson();
-            UpdateInfo = recordInfo.GetRecordUpdatedInfo();
+        }
+
+        public ClientDetailsViewModel ShallowCopy()
+        {
+            return (ClientDetailsViewModel)this.MemberwiseClone();
+        }
+
+        public Client GetClientModel()
+        {
+            return new Client(FirstName, SecondName, LastName, Phone, Passport, new RecordInfo(Created, CreatedBy, Updated, UpdatedBy));
         }
     }
 }

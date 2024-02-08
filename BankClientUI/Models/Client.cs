@@ -24,6 +24,16 @@
             this.passport = passport;
             this.recordInfo = new RecordInfo(createdBy);
         }
+        [JsonConstructor]
+        public Client(string firstName, string secondName, string lastName, string phone, string passport, RecordInfo recordInfo)
+        {
+            this.firstName = firstName;
+            this.secondName = secondName;
+            this.lastName = lastName;
+            this.phone = phone;
+            this.passport = passport;
+            this.recordInfo = recordInfo;
+        }
 
         public void SetFirstname(string firstName) => this.firstName = firstName;
         public void SetSecondname(string secondName) => this.secondName = secondName;

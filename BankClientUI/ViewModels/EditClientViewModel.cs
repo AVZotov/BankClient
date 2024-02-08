@@ -1,13 +1,38 @@
-﻿namespace BankClientUI.ViewModels
+﻿
+namespace BankClientUI.ViewModels
 {
-    [QueryProperty(nameof(IsFullAccess), nameof(IsFullAccess))]
-    [QueryProperty(nameof(ClientDetailsViewModel), nameof(ClientDetailsViewModel))]
+    [QueryProperty(nameof(IsPassportBlocked), nameof(IsPassportBlocked))]
+    [QueryProperty(nameof(ClientDetails), nameof(ClientDetailsViewModel))]
     public partial class EditClientViewModel : BaseViewModel
     {
         [ObservableProperty]
-        private bool isFullAccess;
+        private bool isPassportBlocked;
 
         [ObservableProperty]
-        private ClientDetailsViewModel? clientDetailsViewModel;
+        private ClientDetailsViewModel? clientDetails;
+
+        [RelayCommand]
+        private void Cancel()
+        {
+            Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        private void Save()
+        {
+            if (ClientDetails is null)
+            {
+                Cancel();
+            }
+
+            if (ClientDetails is not null)
+            {
+                Shell.Current.GoToAsync(nameof(ClientsPage), new Dictionary<string, object>
+                {
+                    ["updatedClientDetails"] = ClientDetails
+                });
+            }
+        }
     }
 }
+

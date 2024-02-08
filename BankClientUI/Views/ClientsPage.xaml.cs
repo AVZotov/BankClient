@@ -15,6 +15,9 @@ public partial class ClientsPage : ContentPage
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
+
+        if (this.clientsViewModel.Clients.Count > 0) { return; }
+
         clientsViewModel.GetClients();
     }
 

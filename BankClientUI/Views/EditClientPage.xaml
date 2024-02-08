@@ -21,7 +21,8 @@
         <BackButtonBehavior IsVisible="False"/>
     </Shell.BackButtonBehavior>
 
-    <Border Stroke="Black" Margin="30">
+    <Border Stroke="Black" Margin="100, 20, 100, 20"
+            Background="#84A7BA">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="15"/>
         </Border.StrokeShape>
@@ -30,7 +31,86 @@
             <Shadow Brush="Black" Radius="5"
                             Offset="5, 5" Opacity="0.9"/>
         </Border.Shadow>
-        
-        <Button Text="Cancel" IsEnabled="{Binding IsFullAccess}" />
+
+        <Grid RowDefinitions="*, auto">
+
+            <VerticalStackLayout Grid.Row="0" Padding="150, 10, 150, 0"
+                                 Spacing="10">
+
+                <Frame BackgroundColor="Transparent" Margin="50, 0, 50, 0">
+                    <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                        <Label Text="Last name:" TextColor="#2C3C5D"
+                               VerticalOptions="Center" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalTextAlignment="Center" WidthRequest="180"/>
+                        <Entry Text="{Binding ClientDetails.LastName}"
+                               TextColor="#2C3C5D" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalOptions="Center" VerticalTextAlignment="Center" />
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="Transparent" Margin="50, 0, 50, 0">
+                    <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                        <Label Text="First name:" TextColor="#2C3C5D"
+                               VerticalOptions="Center" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalTextAlignment="Center" WidthRequest="180"/>
+                        <Entry Text="{Binding ClientDetails.FirstName}"
+                               TextColor="#2C3C5D" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="Transparent" Margin="50, 0, 50, 0">
+                    <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                        <Label Text="Second name:" TextColor="#2C3C5D"
+                               VerticalOptions="Center" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalTextAlignment="Center" WidthRequest="180"/>
+                        <Entry Text="{Binding ClientDetails.SecondName}"
+                               TextColor="#2C3C5D" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="Transparent" Margin="50, 0, 50, 0">
+                    <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                        <Label Text="Phone:" TextColor="#2C3C5D"
+                               VerticalOptions="Center" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalTextAlignment="Center" WidthRequest="180"/>
+                        <Entry Text="{Binding ClientDetails.Phone}"
+                               TextColor="#2C3C5D" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="Transparent" Margin="50, 0, 50, 0">
+                    <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                        <Label Text="Passport:" TextColor="#2C3C5D"
+                               VerticalOptions="Center" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalTextAlignment="Center" WidthRequest="180"/>
+                        <Entry Text="{Binding ClientDetails.Passport}"
+                               TextColor="#2C3C5D" FontAutoScalingEnabled="True"
+                               FontSize="Medium" FontAttributes="Bold"
+                               VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                    </HorizontalStackLayout>
+                </Frame>
+                
+                    <HorizontalStackLayout Margin="50, 0, 50, 0" Spacing="100"
+                                           HorizontalOptions="CenterAndExpand">
+                        <Button Text="Save Changes" WidthRequest="150"
+                                Command="{Binding SaveCommand}"/>
+                        
+                        <Button Text="Cancel" WidthRequest="150"
+                                Command="{Binding CancelCommand}"/>
+                    </HorizontalStackLayout>
+            </VerticalStackLayout>
+        </Grid>
     </Border>
 </ContentPage>

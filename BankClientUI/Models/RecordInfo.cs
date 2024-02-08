@@ -7,11 +7,20 @@
         [JsonProperty]
         private string createdBy { get; set; }
         [JsonProperty]
-        private DateTime updated { get; set; }
+        private DateTime? updated { get; set; }
         [JsonProperty]
-        private string updatedBy { get; set; } = string.Empty;
+        private string? updatedBy { get; set; } = string.Empty;
         [JsonProperty]
-        private string updateInfo { get; set; }
+        private string? updateInfo { get; set; }
+
+        [JsonConstructor]
+        public RecordInfo(DateTime created, string createdBy, DateTime? updated, string? updatedBy)
+        {
+            this.created = created;
+            this.createdBy = createdBy;
+            this.updated = updated;
+            this.updatedBy = updatedBy;
+        }
 
         public RecordInfo(string createdBy)
         {
@@ -22,15 +31,11 @@
             this.updateInfo = "Record created";
         }
 
-        public void SetRecordUpdateDate(DateTime updated) => this.updated = updated;
-        public void SetRecordUpdatePerson(string person) => this.updatedBy = person;
-        public void SetRecordUpdateInfo(string info) => this.updateInfo = info;
-
         public DateTime GetRecordCreationDate() => created;
         public string GetRecordCreationPerson() => createdBy;
-        public DateTime GetRecordUpdatedDate() => updated;
-        public string GetRecordUpdatedPerson() => updatedBy;
-        public string GetRecordUpdatedInfo() => updateInfo;
+        public DateTime? GetRecordUpdatedDate() => updated;
+        public string? GetRecordUpdatedPerson() => updatedBy;
+        public string? GetRecordUpdatedInfo() => updateInfo;
 
         public override string ToString()
         {

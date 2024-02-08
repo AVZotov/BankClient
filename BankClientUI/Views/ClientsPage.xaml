@@ -123,15 +123,15 @@
                                 </VerticalStackLayout>
 
                                 <VerticalStackLayout Grid.Column="0" Spacing="10">
-                                    <Label Text="{Binding SelectedClient.LastName}" TextColor="#8E9BB7" FontSize="Medium"/>
-                                    <Label Text="{Binding SelectedClient.FirstName}" TextColor="#8E9BB7" FontSize="Medium"/>
-                                    <Label Text="{Binding SelectedClient.SecondName}" TextColor="#8E9BB7" FontSize="Medium"/>
-                                    <Label Text="{Binding SelectedClient.Phone}" TextColor="#8E9BB7" FontSize="Medium"/>
-                                    <Label Text="{Binding SelectedClient.Passport}" TextColor="#8E9BB7" FontSize="Medium"/>
-                                    <Label Text="{Binding SelectedClient.Created}" TextColor="#8E9BB7" FontSize="Medium"/>
-                                    <Label Text="{Binding SelectedClient.CreatedBy}" TextColor="#8E9BB7" FontSize="Medium"/>
-                                    <Label Text="{Binding SelectedClient.Updated}" TextColor="#8E9BB7" FontSize="Medium"/>
-                                    <Label Text="{Binding SelectedClient.UpdatedBy}" TextColor="#8E9BB7" FontSize="Medium"/>
+                                    <Entry Text="{Binding SelectedClient.LastName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                    <Entry Text="{Binding SelectedClient.FirstName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                    <Entry Text="{Binding SelectedClient.SecondName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                    <Entry Text="{Binding SelectedClient.Phone}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                    <Entry Text="{Binding SelectedClient.Passport}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" IsPassword="{Binding IsPassportBlocked}"/>
+                                    <Entry Text="{Binding SelectedClient.Created}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                    <Entry Text="{Binding SelectedClient.CreatedBy}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                    <Entry Text="{Binding SelectedClient.Updated}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                    <Entry Text="{Binding SelectedClient.UpdatedBy}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
                                 </VerticalStackLayout>
                             </HorizontalStackLayout>
                         </Grid>
@@ -184,13 +184,3 @@
         </Grid>
     </Border>
 </ContentPage>
-
-
-
-                    <!--<HorizontalStackLayout Spacing="20">
-                        <Entry IsReadOnly="{Binding IsBlocked}" FontSize="Medium" ClearButtonVisibility="WhileEditing"
-                           Placeholder="{Binding SelectedClient.LastName}" ReturnCommand="{Binding UdpateCommand}" ReturnCommandParameter="{Binding Source={RelativeSource Self}}"
-                           VerticalOptions="CenterAndExpand" HorizontalOptions="Start"
-                               PlaceholderColor="Black"/>
-                        <Label Text="{Binding SelectedClient.LastName}"></Label>
-                    </HorizontalStackLayout>-->

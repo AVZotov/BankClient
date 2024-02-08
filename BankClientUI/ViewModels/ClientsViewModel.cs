@@ -8,6 +8,12 @@
         private bool isFullAccess;
 
         [ObservableProperty]
+        private bool isPassportBlocked;
+
+        [ObservableProperty]
+        private bool canDelete;
+
+        [ObservableProperty]
         private ClientDetailsViewModel? selectedClient = null;
 
         [ObservableProperty]
@@ -31,14 +37,14 @@
         [RelayCommand]
         private void EditClient()
         {
-            if (SelectedClient is not null)
+            if (SelectedClient != null)
             {
-                Shell.Current.GoToAsync($"{nameof(EditClientPage)}?IsFullAccess={IsFullAccess}", new Dictionary<string, object>
+                
+                Shell.Current.GoToAsync($"{nameof(EditClientPage)}?IsPassportBlocked={IsPassportBlocked}", new Dictionary<string, object>
                 {
-                    [nameof(ClientDetailsViewModel)] = SelectedClient
+                    [nameof(ClientDetailsViewModel)] = SelectedClient.ShallowCopy()
                 });
             }
-
         }
 
         public void GetClients()
@@ -51,22 +57,61 @@
 
             foreach (Client client in clientsList)
             {
-                Clients.Add(new ClientDetailsViewModel(client, Worker));
+                Clients.Add(new ClientDetailsViewModel(client));
             }
         }
 
         public void ApplyQueryAttributes(IDictionary<string, object> query)
         {
+            if (query.Count == 0)
+            {
+                return;
+            }
+
             if (query.TryGetValue(nameof(Worker), out object? value))
             {
                 Worker = (IWorker)value;
                 IsFullAccess = IsManager();
+                IsPassportBlocked = !IsFullAccess;
+                query.Clear();
+            }
+
+            if (query.TryGetValue("updatedClientDetails", out object? incomingClientDetails))
+            {
+                if (incomingClientDetails is not null)
+                {
+                    UpdateClientDetails(incomingClientDetails);
+                    query.Clear();
+                }
+
             }
         }
 
         private bool IsManager()
         {
             return Worker != null && !Worker.GetAccess().Equals("worker");
+        }
+
+        private void UpdateClientDetails(object incomingClientDetails)
+        {
+            if (incomingClientDetails is not ClientDetailsViewModel clientDetais || SelectedClient is null) { return; }
+
+            if (!string.IsNullOrEmpty(clientDetais.FirstName)) { SelectedClient.FirstName = clientDetais.FirstName; }
+            
+            if (!string.IsNullOrEmpty(clientDetais.FirstName)) { SelectedClient.SecondName = clientDetais.SecondName; }
+            
+            if (!string.IsNullOrEmpty(clientDetais.FirstName)) { SelectedClient.LastName = clientDetais.LastName; }
+            
+            if (!string.IsNullOrEmpty(clientDetais.FirstName)) { SelectedClient.Phone = clientDetais.Phone; }
+            
+            if (!string.IsNullOrEmpty(clientDetais.FirstName)) { SelectedClient.Passport = clientDetais.Passport; }
+            
+            if (!string.IsNullOrEmpty(clientDetais.FirstName)) { SelectedClient.Created = clientDetais.Created; }
+            
+            if (!string.IsNullOrEmpty(clientDetais.FirstName)) { SelectedClient.CreatedBy = clientDetais.CreatedBy; }
+
+            SelectedClient.Updated = clientDetais.Updated;
+            SelectedClient.UpdatedBy = clientDetais.UpdatedBy;
         }
     }
 }
