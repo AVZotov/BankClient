@@ -47,6 +47,12 @@
             }
         }
 
+        [RelayCommand]
+        private void AddNewClient()
+        {
+            Shell.Current.GoToAsync(nameof(AddClientPage));
+        }
+
         public void GetClients()
         {
             List<Client> clientsList = storage.GetClients();

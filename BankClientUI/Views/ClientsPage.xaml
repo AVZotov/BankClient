@@ -173,7 +173,7 @@
                     <Button Text="Add new client" TextColor="#8E9BB7"
                             FontAttributes="Bold" BackgroundColor="#2C3C5D"
                             FontSize="Small" FontAutoScalingEnabled="True"
-                            IsVisible="{Binding IsFullAccess}">
+                            IsVisible="{Binding IsFullAccess}" Command="{Binding AddNewClientCommand}">
                         <Button.GestureRecognizers>
                             <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered"/>
                             <PointerGestureRecognizer PointerExited="PointerGestureRecognizer_PointerExited" />

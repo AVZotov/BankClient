@@ -19,6 +19,8 @@
             builder.Services.AddSingleton<ClientsViewModel>();
             builder.Services.AddTransient<EditClientPage>();
             builder.Services.AddTransient<EditClientViewModel>();
+            builder.Services.AddTransient<AddClientPage>();
+            builder.Services.AddTransient<AddClientViewModel>();
 
             builder.Services.AddTransient<IStorage, FileStorage>();
 #if DEBUG
