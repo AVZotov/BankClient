@@ -34,7 +34,7 @@
 
         <Grid RowDefinitions="*, auto">
 
-            <VerticalStackLayout Grid.Row="0" Padding="150, 10, 150, 0"
+            <VerticalStackLayout Grid.Row="0" Padding="150, 50, 150, 0"
                                  Spacing="10">
 
                 <Frame BackgroundColor="Transparent" Margin="50, 0, 50, 0">
@@ -98,13 +98,14 @@
                         <Entry Text="{Binding ClientDetails.Passport}"
                                TextColor="#2C3C5D" FontAutoScalingEnabled="True"
                                FontSize="Medium" FontAttributes="Bold"
-                               VerticalOptions="Center" VerticalTextAlignment="Center"/>
+                               VerticalOptions="Center" VerticalTextAlignment="Center"
+                               IsPassword="{Binding IsPassportBlocked}" IsReadOnly="{Binding IsPassportBlocked}"/>
                     </HorizontalStackLayout>
                 </Frame>
                 
-                    <HorizontalStackLayout Margin="50, 0, 50, 0" Spacing="100"
+                    <HorizontalStackLayout Margin="50, 20, 50, 0" Spacing="100"
                                            HorizontalOptions="CenterAndExpand">
-                        <Button Text="Save Changes" WidthRequest="150"
+                        <Button Text="Apply Changes" WidthRequest="150"
                                 Command="{Binding SaveCommand}"/>
                         
                         <Button Text="Cancel" WidthRequest="150"

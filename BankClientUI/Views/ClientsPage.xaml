@@ -6,7 +6,7 @@
              x:Class="BankClientUI.Views.ClientsPage"
              Shell.NavBarIsVisible="False"
              Title="{Binding Title}">
-    
+
     <ContentPage.Background>
 
         <LinearGradientBrush>
@@ -16,7 +16,7 @@
                           Offset="1.0" />
         </LinearGradientBrush>
     </ContentPage.Background>
-    
+
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False"/>
     </Shell.BackButtonBehavior>
@@ -108,33 +108,52 @@
                       Margin="100, 0, 100, 25" ColumnSpacing="20">
 
                     <Frame Grid.Column="0" Background="Transparent">
-                        <Grid>
-                            <HorizontalStackLayout Spacing="50" HorizontalOptions="Center" VerticalOptions="Center">
-                                <VerticalStackLayout Grid.Column="0" Spacing="10">
-                                    <Label Text="Last name:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="First name:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="Second name:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="Phone:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="Passport:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="Record created:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="Created by:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="Last update:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                    <Label Text="Updated by:" TextColor="#8E9BB7" FontSize="Medium" HorizontalOptions="EndAndExpand"/>
-                                </VerticalStackLayout>
-
-                                <VerticalStackLayout Grid.Column="0" Spacing="10">
-                                    <Entry Text="{Binding SelectedClient.LastName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
-                                    <Entry Text="{Binding SelectedClient.FirstName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
-                                    <Entry Text="{Binding SelectedClient.SecondName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
-                                    <Entry Text="{Binding SelectedClient.Phone}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
-                                    <Entry Text="{Binding SelectedClient.Passport}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" IsPassword="{Binding IsPassportBlocked}"/>
-                                    <Entry Text="{Binding SelectedClient.Created}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
-                                    <Entry Text="{Binding SelectedClient.CreatedBy}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
-                                    <Entry Text="{Binding SelectedClient.Updated}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
-                                    <Entry Text="{Binding SelectedClient.UpdatedBy}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
-                                </VerticalStackLayout>
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout>
+                                <Label Text="Last name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.LastName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
                             </HorizontalStackLayout>
-                        </Grid>
+
+                            <HorizontalStackLayout>
+                                <Label Text="First name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.FirstName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <Label Text="Second name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.SecondName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <Label Text="Phone" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.Phone}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <Label Text="Passport" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.Passport}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" IsPassword="{Binding IsPassportBlocked}"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <Label Text="Record created:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.Created}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <Label Text="Created by:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.CreatedBy}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <Label Text="Last update:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.Updated}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                            </HorizontalStackLayout>
+
+                            <HorizontalStackLayout>
+                                <Label Text="Updated by:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
+                                <Entry Text="{Binding SelectedClient.UpdatedBy}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
                     </Frame>
                 </Grid>
 
@@ -154,7 +173,7 @@
                     <Button Text="Add new client" TextColor="#8E9BB7"
                             FontAttributes="Bold" BackgroundColor="#2C3C5D"
                             FontSize="Small" FontAutoScalingEnabled="True"
-                            IsEnabled="{Binding IsFullAccess}">
+                            IsVisible="{Binding IsFullAccess}">
                         <Button.GestureRecognizers>
                             <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered"/>
                             <PointerGestureRecognizer PointerExited="PointerGestureRecognizer_PointerExited" />
@@ -164,7 +183,7 @@
                     <Button Text="Delete record" TextColor="#8E9BB7"
                             FontAttributes="Bold" BackgroundColor="#2C3C5D"
                             FontSize="Small" FontAutoScalingEnabled="True"
-                            IsEnabled="{Binding IsFullAccess}">
+                            IsVisible="{Binding IsFullAccess}">
                         <Button.GestureRecognizers>
                             <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered"/>
                             <PointerGestureRecognizer PointerExited="PointerGestureRecognizer_PointerExited" />

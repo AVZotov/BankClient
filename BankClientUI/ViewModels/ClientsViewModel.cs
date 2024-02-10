@@ -83,7 +83,6 @@
                     UpdateClientDetails(incomingClientDetails);
                     query.Clear();
                 }
-
             }
         }
 
