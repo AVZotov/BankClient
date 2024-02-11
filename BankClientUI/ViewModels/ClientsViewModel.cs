@@ -53,6 +53,16 @@
             Shell.Current.GoToAsync(nameof(AddClientPage));
         }
 
+        [RelayCommand]
+        private void DeleteClient() 
+        {
+            if (SelectedClient is not null)
+            {
+                Clients.Remove(SelectedClient);
+                SelectedClient = null;
+            }
+        }
+
         public void GetClients()
         {
             List<Client> clientsList = storage.GetClients();
@@ -91,9 +101,10 @@
 
             if (query.TryGetValue("newClient", out object? newClientDetails))
             {
-                if (incomingClientDetails is not null)
+                if (newClientDetails is not null)
                 {
                     Clients.Add((ClientDetailsViewModel)newClientDetails);
+                    SelectedClient = (ClientDetailsViewModel)newClientDetails;
                 }
             }
 

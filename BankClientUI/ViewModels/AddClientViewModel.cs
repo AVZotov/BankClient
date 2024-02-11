@@ -25,8 +25,7 @@
                     ["newClient"] = clientDetailsViewModel 
                 });
             }
-
-            Shell.Current.DisplayAlert("Error!", "Please add all the field to create new customer", "OK");
+            else { Shell.Current.DisplayAlert("Error!", "Please add all the field to create new customer", "OK"); }
         }
 
         [RelayCommand]
