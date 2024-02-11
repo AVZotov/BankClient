@@ -79,7 +79,6 @@
                 Worker = (IWorker)value;
                 IsFullAccess = IsManager();
                 IsPassportBlocked = !IsFullAccess;
-                query.Clear();
             }
 
             if (query.TryGetValue("updatedClientDetails", out object? incomingClientDetails))
@@ -87,9 +86,18 @@
                 if (incomingClientDetails is not null)
                 {
                     UpdateClientDetails(incomingClientDetails);
-                    query.Clear();
                 }
             }
+
+            if (query.TryGetValue("newClient", out object? newClientDetails))
+            {
+                if (incomingClientDetails is not null)
+                {
+                    Clients.Add((ClientDetailsViewModel)newClientDetails);
+                }
+            }
+
+            query.Clear();
         }
 
         private bool IsManager()

@@ -16,16 +16,23 @@
         [RelayCommand]
         private void SaveClient()
         {
-            if (FirstName is not null && LastName is not null && Phone is not null && Passport is not null)
+            if (!string.IsNullOrWhiteSpace(FirstName) && !string.IsNullOrWhiteSpace(LastName) && !string.IsNullOrWhiteSpace(Phone) && !string.IsNullOrWhiteSpace(Passport))
             {
-                ClientDetailsViewModel clientDetailsViewModel = new(new Client(FirstName, SecondName, LastName, Phone, Passport, new RecordInfo("manager")));
-                Shell.Current.GoToAsync(nameof(ClientsPage), new Dictionary<string, object>{
-                    ["new client"] = clientDetailsViewModel
+                ClientDetailsViewModel clientDetailsViewModel = new(new Client(FirstName, SecondName, LastName, Phone,
+                                                                               Passport, new RecordInfo("manager")));
+
+                Shell.Current.GoToAsync(nameof(ClientsPage), new Dictionary<string, object> { 
+                    ["newClient"] = clientDetailsViewModel 
                 });
             }
 
             Shell.Current.DisplayAlert("Error!", "Please add all the field to create new customer", "OK");
-            return;
+        }
+
+        [RelayCommand]
+        private void Cancel() 
+        {
+            Shell.Current.GoToAsync("..");
         }
     }
 }

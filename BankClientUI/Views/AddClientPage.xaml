@@ -4,7 +4,7 @@
              x:Class="BankClientUI.Views.AddClientPage"
              Shell.NavBarIsVisible="False"
              xmlns:viewmodel="clr-namespace:BankClientUI.ViewModels"
-             x:DataType="viewmodel:EditClientViewModel"
+             x:DataType="viewmodel:AddClientViewModel"
              Title="{Binding Title}">
 
     <ContentPage.Background>
@@ -17,11 +17,32 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
+    <ContentPage.Resources>
+        <Style TargetType="Label" x:Key="myLabelStyle">
+            <Setter Property="TextColor" Value="#2C3C5D" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontAutoScalingEnabled" Value="True" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+            <Setter Property="WidthRequest" Value="180" />
+        </Style>
+
+        <Style TargetType="Entry" x:Key="myEntryStyle">
+            <Setter Property="TextColor" Value="#2C3C5D" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="FontAutoScalingEnabled" Value="True" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="FontSize" Value="Medium" />
+            <Setter Property="VerticalTextAlignment" Value="Center" />
+        </Style>
+    </ContentPage.Resources>
+
     <Shell.BackButtonBehavior>
         <BackButtonBehavior IsVisible="False"/>
     </Shell.BackButtonBehavior>
 
-    <Border Stroke="Black" Margin="100, 20, 100, 20"
+    <Border Stroke="Black" Margin="50, 20, 50, 20"
         Background="#84A7BA">
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="15"/>
@@ -32,5 +53,40 @@
                         Offset="5, 5" Opacity="0.9"/>
         </Border.Shadow>
 
+        <Frame BackgroundColor="Transparent" Margin="150, 50, 150, 50">
+            <VerticalStackLayout HorizontalOptions="Center" Spacing="20">
+                <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                    <Label Text="Last name:" Style="{StaticResource myLabelStyle}" />
+                    <Entry Text="{Binding LastName}" Style="{StaticResource myEntryStyle}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                    <Label Text="First name:" Style="{StaticResource myLabelStyle}" />
+                    <Entry Text="{Binding FirstName}" Style="{StaticResource myEntryStyle}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                    <Label Text="Second name:" Style="{StaticResource myLabelStyle}" />
+                    <Entry Text="{Binding SecondName}" Style="{StaticResource myEntryStyle}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                    <Label Text="Phone:" Style="{StaticResource myLabelStyle}" />
+                    <Entry Text="{Binding Phone}" Style="{StaticResource myEntryStyle}" />
+                </HorizontalStackLayout>
+
+                <HorizontalStackLayout Spacing="30" HorizontalOptions="StartAndExpand">
+                    <Label Text="Passport:" Style="{StaticResource myLabelStyle}" />
+                    <Entry Text="{Binding Passport}" Style="{StaticResource myEntryStyle}" />
+                </HorizontalStackLayout>
+                
+                <HorizontalStackLayout Spacing="150" HorizontalOptions="Center" Margin="0,30,0,0">
+                    <Button Text="Add Client" Command="{Binding SaveClientCommand}" />
+                    <Button Text="Cancel" Command="{Binding CancelCommand}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+            
+
+        </Frame>
     </Border>
 </ContentPage>
