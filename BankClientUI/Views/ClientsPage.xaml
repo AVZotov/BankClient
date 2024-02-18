@@ -72,8 +72,6 @@
                                 </HorizontalStackLayout>
                             </Frame>
                         </VerticalStackLayout>
-
-
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
@@ -110,33 +108,33 @@
                     <Frame Grid.Column="0" Background="Transparent">
                         <VerticalStackLayout>
                             <HorizontalStackLayout>
-                                <Label Text="Last name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
-                                <Entry Text="{Binding SelectedClient.LastName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                <Label Text="Last name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180" FontAutoScalingEnabled="True"/>
+                                <Entry Text="{Binding SelectedClient.LastName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" FontAutoScalingEnabled="True"/>
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <Label Text="First name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
-                                <Entry Text="{Binding SelectedClient.FirstName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                <Label Text="First name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180" FontAutoScalingEnabled="True"/>
+                                <Entry Text="{Binding SelectedClient.FirstName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" FontAutoScalingEnabled="True"/>
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <Label Text="Second name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
-                                <Entry Text="{Binding SelectedClient.SecondName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                <Label Text="Second name:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180" FontAutoScalingEnabled="True"/>
+                                <Entry Text="{Binding SelectedClient.SecondName}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" FontAutoScalingEnabled="True"/>
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <Label Text="Phone" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
-                                <Entry Text="{Binding SelectedClient.Phone}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                <Label Text="Phone" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180" FontAutoScalingEnabled="True"/>
+                                <Entry Text="{Binding SelectedClient.Phone}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" FontAutoScalingEnabled="True"/>
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <Label Text="Passport" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
-                                <Entry Text="{Binding SelectedClient.Passport}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" IsPassword="{Binding IsPassportBlocked}"/>
+                                <Label Text="Passport" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180" FontAutoScalingEnabled="True"/>
+                                <Entry Text="{Binding SelectedClient.Passport}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" IsPassword="{Binding IsPassportBlocked}" FontAutoScalingEnabled="True"/>
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
-                                <Label Text="Record created:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180"/>
-                                <Entry Text="{Binding SelectedClient.Created}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True"/>
+                                <Label Text="Record created:" TextColor="#8E9BB7" FontSize="Medium" VerticalOptions="Center" WidthRequest="180" FontAutoScalingEnabled="True"/>
+                                <Entry Text="{Binding SelectedClient.Created}" TextColor="#8E9BB7" FontSize="Medium" IsReadOnly="True" FontAutoScalingEnabled="True"/>
                             </HorizontalStackLayout>
 
                             <HorizontalStackLayout>
@@ -192,7 +190,8 @@
 
                     <Button Text="Save changes" TextColor="#8E9BB7"
                             FontAttributes="Bold" BackgroundColor="#2C3C5D"
-                            FontSize="Small" FontAutoScalingEnabled="True">
+                            FontSize="Small" FontAutoScalingEnabled="True"
+                            Command="{Binding SaveToFileCommand}">
                         <Button.GestureRecognizers>
                             <PointerGestureRecognizer PointerEntered="PointerGestureRecognizer_PointerEntered"/>
                             <PointerGestureRecognizer PointerExited="PointerGestureRecognizer_PointerExited" />

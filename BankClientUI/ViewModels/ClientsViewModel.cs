@@ -63,6 +63,19 @@
             }
         }
 
+        [RelayCommand]
+        private void SaveToFile()
+        {
+            List<Client> clients = [];
+
+            foreach (var client in Clients)
+            {
+                clients.Add(client.GetClientModel());
+            }
+
+            storage.SaveClients(clients);
+        }
+
         public void GetClients()
         {
             List<Client> clientsList = storage.GetClients();

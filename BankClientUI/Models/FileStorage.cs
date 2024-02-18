@@ -14,11 +14,10 @@
                 using var reader = new StreamReader(stream.Result);
                 string json = reader.ReadToEndAsync().Result;
                 clients = JsonConvert.DeserializeObject<List<Client>>(json);
-
-                return clients;
+                reader.Close();
             }
 
-            throw new FileNotFoundException();
+            return clients;
         }
 
         public void SaveClients(List<Client> clients)
