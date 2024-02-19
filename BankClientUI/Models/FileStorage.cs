@@ -1,4 +1,6 @@
-﻿namespace BankClientUI.Models
+﻿using Windows.Storage;
+
+namespace BankClientUI.Models
 {
     public class FileStorage : IStorage
     {
@@ -23,6 +25,16 @@
         public void SaveClients(List<Client> clients)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task WriteToFileAsync(string fileName, string content)
+        {
+            StorageFolder localFolder = ApplicationData.Current.LocalFolder;
+            StorageFile file = await localFolder.CreateFileAsync(fileName, CreationCollisionOption.OpenIfExists);
+            using (StreamWriter writer = new StreamWriter(await file.OpenStreamForWriteAsync()))
+            {
+                await writer.WriteAsync(content);
+            }
         }
     }
 }
